@@ -53,7 +53,7 @@ main{
 }
 @media (max-width:600px){
     body{
-        padding: 600px;
+        padding: 10px;
     }
     h1{
         font-size: 1.8rem;
