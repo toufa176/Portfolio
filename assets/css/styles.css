@@ -6,8 +6,8 @@
  }
 
  body {
-    background: linear-gradient(120deg,#0f2027,#203a43,#2c5364);
-    color: #ffffff;
+    background: var(--bg-gradient);
+    color: var(--text-color);
     line-height: 1.6;
  }
 
@@ -43,7 +43,7 @@ section {
 }
 
 .project {
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--card-bg);
     padding: 20px;
     border-radius: 12px;
     transition: transform 0.3s;
@@ -61,7 +61,7 @@ section {
 }
 
 .skills li {
-    background: rgba(255, 255, 255, 0.15);
+    background: var(--card-bg);
     padding: 10px 15px;
     border-radius: 20px;
 }
@@ -104,4 +104,60 @@ html {
 .show {
     opacity: 1;
     transform: translateY(0);
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+
+}
+
+.modal-content {
+    background: #1c1c1c;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 400px;
+    text-align: center;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.modal a {
+    display: inline-block;
+    margin-top: 15px;
+    color: #00e5ff;
+}
+
+:root {
+    --bg-gradient: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+    --text-color: #ffffff;
+    --card-bg: rgba(255, 255, 255, 0.1);
+}
+
+.light-theme {
+    --bg-gradient: linear-gradient(120deg, #fdfbfb, #ebedee);
+    --text-color: #000000;
+    --card-bg: rgba(0, 0, 0, 0.08);
+}
+
+#theme-toggle {
+    background: transparent;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: var(--text-color);
 }

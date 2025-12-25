@@ -16,15 +16,18 @@ typeEffect();
 const projects = [
     {
     name: "Task Manager App",
-    description: "Full-stack task manager using Node.js, Express, and REST APIs"
+    description: "Full-stack task manager using Node.js, Express, and REST APIs",
+    github: "https://github.com/toufa176/Task-Manager"
 
     },
     {
         name: "Birthday Page",
-        description: "Interactive birthday page with music, animations, and mobile support"
+        description: "Interactive birthday page with music, animations, and mobile support",
+        github: "https://github.com/toufa176/Birthday"
     }
 ];
 
+//Project Rendering Logic
 const projectList = document.getElementById("project-list");
 
 projects.forEach(project =>{
@@ -35,6 +38,8 @@ projects.forEach(project =>{
     <h3>${project.name}</h3>
     <p>${project.description}</p>
     `;
+    
+    div.addEventListener("click", () => openModal(project));
 
     projectList.appendChild(div);
 });
@@ -76,4 +81,35 @@ const observer = new IntersectionObserver(entries => {
 sections.forEach(section => {
     section.classList.add("hidden");
     observer.observe(section);
+});
+
+//modal logic
+const modal = document.getElementById("project-modal");
+const closeModalBtn = document.getElementById("close-modal");
+
+function openModal(project) {
+    document.getElementById("modal-title").textContent = project.name;
+    document.getElementById("modal-description").textContent = project.description;
+    document.getElementById("modal-github").href = project,github;
+
+    modall.style.display = "flex";
+}
+
+closeModalBtn.addEventListener("click",() => {
+    modal.style.display = "none";
+});
+
+window.addEventListener("click", e => {
+    if (e.target === modal) {
+        modal.style.display = "none";
+    }
+});
+
+const toggleBtn = document.getElementById("theme-toggle");
+
+toggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("light-theme");
+
+    toggleBtn.textContent =
+    document.body.classList.contains("light-theme") ? "❂": "🌙";
 });

@@ -8,6 +8,7 @@
 </head>
 <body>
     <nav class="navbar">
+        <button id="theme-toggle">🌙</button>
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
     </nav>
@@ -27,6 +28,14 @@
             <h2>Skills</h2>
             <ul id="skills-list"></ul>
         </section>
+        <div class="modal" id="project-modal">
+            <div class="modal-content">
+                <span class="close-btn" id="close-modal">&times;</span>
+                <h3 id="modal-title"></h3>
+                <p id="modal-description"></p>
+                <a id="modal-github" target="_blank">GitHub Repo</a>
+            </div>
+        </div>
 
     </main>
     <footer>
