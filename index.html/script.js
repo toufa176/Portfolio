@@ -17,34 +17,39 @@ const projects = [
     {
     name: "Task Manager App",
     description: "Full-stack task manager using Node.js, Express, and REST APIs",
-    github: "https://github.com/toufa176/Task-Manager"
+    github: "https://github.com/toufa176/Task-Manager",
+    category: "backend"
 
     },
     {
         name: "Birthday Page",
         description: "Interactive birthday page with music, animations, and mobile support",
-        github: "https://github.com/toufa176/Birthday"
+        github: "https://github.com/toufa176/Birthday",
+        category: "frontend"
     }
 ];
 
 //Project Rendering Logic
 const projectList = document.getElementById("project-list");
 
-projects.forEach(project =>{
-    const div = document.createElement("div");
-    div.className = "project";
+ function renderProjects(list) {
+    projectList.innerHTML = "";
 
-    div.style.touchAction= "manipulation";
+    list.forEach(project => {
+        const div = document.createElement("div");
+        div.className = "project";
+        div.style.touchAction = "manipulation";
 
-    div.innerHTML = `
-    <h3>${project.name}</h3>
-    <p>${project.description}</p>
-    `;
-    
-    div.addEventListener("click", () => openModal(project));
+        div.innerHTML =`
+        <h3>${project.name} </h3>
+        <p>${project.description}</p>
+        `;
 
-    projectList.appendChild(div);
-});
+        div.addEventListener("click", () => openModal (project));
+        projectList.appendChild(div);
+    });
+ }
+renderProjects(projects);
 
 // dynamic  skills
 const skills = [
@@ -114,4 +119,24 @@ toggleBtn.addEventListener("click", () => {
 
     toggleBtn.textContent =
     document.body.classList.contains("light-theme") ? "❂": "🌙";
+});
+
+const filterButtons = document.querySelectorAll(".filters button");
+
+filterButtons.forEach(btn => {
+    btn.addEventListener("click", () =>{
+        filterButtons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        const category = btn.dataset.category;
+
+        if (category === "all") {
+            renderProjects(projects);
+
+        } else {
+            const filtered = projects.filter(p = p.category === category);
+            renderProjects (filtered);
+        }
+    });
+
 });
