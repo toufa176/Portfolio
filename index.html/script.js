@@ -34,6 +34,8 @@ projects.forEach(project =>{
     const div = document.createElement("div");
     div.className = "project";
 
+    div.style.touchAction= "manipulation";
+
     div.innerHTML = `
     <h3>${project.name}</h3>
     <p>${project.description}</p>
